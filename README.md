@@ -40,13 +40,13 @@ A high-performance download manager built with React Native and Expo, featuring 
 
 ### File Size Recommendations
 
-| File Size | Recommended Connections | Memory Usage |
-|-----------|------------------------|--------------|
-| < 50MB    | 6-8 connections        | ~10MB        |
-| 50-200MB  | 4-6 connections        | ~15MB        |
-| 200MB-1GB | 4 connections          | ~20MB        |
-| 1-3GB     | 2-4 connections        | ~25MB        |
-| 3-5GB     | 2-3 connections        | ~30MB        |
+| File Size | Recommended Connections | Memory Usage | Status |
+|-----------|------------------------|--------------|---------|
+| < 50MB    | 6-8 connections        | ~10MB        | ✅ Fully Supported |
+| 50-200MB  | 4-6 connections        | ~15MB        | ✅ Fully Supported |
+| 200MB-1GB | 4 connections          | ~20MB        | ✅ Fully Supported |
+| 1-2GB     | 2-4 connections        | ~25MB        | ✅ Fully Supported |
+| 2-5GB     | 2-3 connections        | ~30MB        | ❌ Experimental (May cause OOM) |
 
 ## 📦 Installation
 
@@ -56,6 +56,7 @@ A high-performance download manager built with React Native and Expo, featuring 
 - npm or yarn
 - Android Studio (for Android builds)
 - Expo CLI
+- Android device or emulator
 
 ### Setup
 
@@ -72,6 +73,46 @@ npx expo start
 
 # Run on Android
 npx expo run:android
+```
+
+## 🎯 Usage Guide
+
+### Testing Environment Setup
+
+1. **Install the Application**
+   - Download and install the APK on your Android device
+   - Grant storage permissions when prompted
+
+2. **Start the Development Server**
+   ```bash
+   npx expo start
+   ```
+   - A QR code will appear in the terminal
+   - Note the connection URL (e.g., `exp://192.168.x.x:8081`)
+
+3. **Connect the App to Dev Server**
+   - Open the installed myIdm app on your device
+   - Scan the QR code using the app or Expo Go
+   - The app will connect to your development server
+   - Wait for the bundle to load
+
+4. **Download Files**
+   - Paste the download URL in the input field
+   - Adjust the number of connections using +/- buttons
+     - More connections = smaller chunks = faster download
+     - Recommended: 4-8 connections for most files
+   - Tap the "Download" button
+   - Monitor real-time progress with chunk-level details
+   - File will be saved to `/storage/emulated/0/Download/`
+
+### Example Workflow
+
+```
+1. Install APK → 2. Run `npx expo start` → 3. Scan QR in app
+                                                    ↓
+4. Paste URL → 5. Set connections (e.g., 6) → 6. Click Download
+                                                    ↓
+7. View progress → 8. File saved to Downloads folder
 ```
 
 ## 🔧 Configuration
