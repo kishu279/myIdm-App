@@ -368,7 +368,7 @@ export async function startDownload(
     }
 
     // ── Phase 2: Split into chunks ────────────────────────
-    const effectiveConnections = Math.min(connections, 16); // Cap at 16
+    const effectiveConnections = Math.min(connections, 16);
     const eachChunkSize = Math.ceil(metadata.totalSize / effectiveConnections);
     const timestamp = Date.now();
 

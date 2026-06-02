@@ -6,7 +6,21 @@
 export const MIN_CONNECTIONS = 1;
 
 /** Default number of connections. */
-export const DEFAULT_CONNECTIONS = 1;
+export const DEFAULT_CONNECTIONS = 4;
+
+/** Maximum recommended connections. */
+export const MAX_CONNECTIONS = 8;
+
+/** Maximum file size in bytes (5GB - with largeHeap enabled). */
+export const MAX_FILE_SIZE = 5 * 1024 * 1024 * 1024;
+
+/** Maximum recommended connections based on file size. */
+export const MAX_CONNECTIONS_BY_SIZE = {
+  small: 8,   // < 50MB
+  medium: 6,  // 50-200MB
+  large: 4,   // 200MB-1GB
+  xlarge: 2,  // > 1GB
+} as const;
 
 /** Simulated operation delay in milliseconds (kept for non-download paths). */
 export const OPERATION_DELAY_MS = 1500;
